@@ -1,0 +1,12 @@
+Assignment1::Write a jdbc program as follows:
+===========
+Table Name:Employee_Info.
+Table Columns:-empId,empName,empSalary,empAddress,empMailId,empPhNo.
+Note:create table from oracle command prompt.
+       1.Insert data into Employee Table.
+       2.Update employee salary,empMailId and empPhNo with the help of eid.
+       3.Find those employee whose name starts with 'A'.
+       4.Count how many employee record present in table.        
+       5.delete employee who is getting maximum salary.
+       6.Show all employee.
+Note:Use switch statement to complete this task.

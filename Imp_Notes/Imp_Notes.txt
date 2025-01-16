@@ -1,0 +1,2 @@
+Port No: 1521
+SERVICE_NAME = orcl

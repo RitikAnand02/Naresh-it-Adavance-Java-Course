@@ -1,0 +1,125 @@
+package com.jdbc;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class LoginAndRegister {
+
+	public static void main(String[] args) {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con=DriverManager.getConnection
+					("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			System.out.println("==================Register And Login Page================");
+			Scanner sc=new Scanner(System.in);
+			System.out.println("1.Register\n2.Login\n Choose your Option");
+			int choice=Integer.parseInt(sc.nextLine());
+			switch (choice) {
+			case 1:
+				System.out.println("Register Here...");
+				System.out.println("Enter CId");
+				int cId=Integer.parseInt(sc.nextLine());
+				System.out.println("Enter CNAme");
+				String cName=sc.nextLine();
+				System.out.println("Enter Password");
+				String pWord=sc.nextLine();
+				System.out.println("Enter FName");
+				String fName=sc.nextLine();
+				System.out.println("Enter LName");
+				String lName=sc.nextLine();
+				System.out.println("Enter mId");
+				String mId=sc.nextLine();
+				System.out.println("Enter Phno");
+				long phno=Long.parseLong(sc.nextLine());
+				PreparedStatement ps=con.prepareStatement
+						("insert into custinfo values(?,?,?,?,?,?,?)");
+				ps.setInt(1, cId);
+				ps.setString(2, cName);
+				ps.setString(3, pWord);
+				ps.setString(4, fName);
+				ps.setString(5, lName);
+				ps.setString(6, mId);
+				ps.setLong(7, phno);
+				int k = ps.executeUpdate();
+				if(k>0)
+					System.out.println("Customer Registration Success");
+				else {
+					System.out.println("Failed.....");
+				}
+				break;
+			case 2:
+				System.out.println("Please Login.....");
+				System.out.println("Enter Customer Name");
+				String name=sc.nextLine();
+				System.out.println("Enter Customer Password");
+				String pword=sc.nextLine();
+				PreparedStatement ps1=con.prepareStatement
+						("select * from custinfo where cname=? and pword=?");
+				ps1.setString(1, name);
+				ps1.setString(2, pword);
+				ResultSet rs = ps1.executeQuery();
+				if(rs.next())
+				{
+					System.out.println("Login Success\nNow U can Do further Operations");
+					System.out.println
+					("1.Show All Customers\n2.Update Customer mid and Phno Based on cId\n3.Delete Customer Whose name starts with S\n"
+							+ "4.Show those customer whose id is prime Number");
+					System.out.println("\nSelect Your Option");
+					int option=Integer.parseInt(sc.nextLine());
+					switch(option)
+					{
+					case 1:System.out.println("Retrieving All Customers data");
+					PreparedStatement ps2=con.prepareStatement("select * from custinfo");
+					ResultSet rs1 = ps2.executeQuery();
+					while(rs1.next())
+					{
+						System.out.println
+						(rs1.getString(1)+" "+rs1.getString(2)+
+								" "+rs1.getString(3)+" "+rs1.getString(4)+
+								" "+rs1.getString(5)+" "+rs1.getString(6)+" "+rs1.getString(7));
+					}
+					break;
+					case 2:
+						break;
+					case 3:
+						break;
+					case 4:
+						System.out.println("Customers Whose id is Prime");
+						PreparedStatement ps3=con.prepareStatement("select * from custinfo");
+						ResultSet rs3 = ps3.executeQuery();
+						int c;
+						while(rs3.next())
+						{
+							c=0;
+							int id=rs3.getInt(1);
+							for(int i=1;i<=id;i++)
+							{
+								if(id%i==0)
+									c++;
+							}
+							if(c==2)
+							{
+								System.out.println
+								(rs3.getString(1)+" "+rs3.getString(2)+
+										" "+rs3.getString(3)+" "+rs3.getString(4)+
+										" "+rs3.getString(5)+" "+rs3.getString(6)+" "+rs3.getString(7));
+							}
+						}
+					}
+				}
+				else {
+					System.out.println("Invalid UserName & password");
+				}
+			}
+
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+}

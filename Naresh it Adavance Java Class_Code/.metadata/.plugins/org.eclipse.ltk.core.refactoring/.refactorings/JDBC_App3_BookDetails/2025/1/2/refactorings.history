@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;c0m.test&apos; to &apos;com.test&apos;&#x0D;&#x0A;- Original project: &apos;JDBC_App3_BookDetails&apos;&#x0D;&#x0A;- Original element: &apos;JDBC_App3_BookDetails/src/c0m.test&apos;&#x0D;&#x0A;- Renamed element: &apos;JDBC_App3_BookDetails/src/com.test&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;c0m.test&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;c0m.test" name="com.test" qualified="false" references="true" stamp="1736179759037" textual="false" version="1.0"/>
+</session>
