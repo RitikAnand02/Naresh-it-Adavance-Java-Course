@@ -1,0 +1,58 @@
+Program_01:
+==========
+You are tasked with developing a Java application that interacts with a relational database using JDBC. The application needs to perform a series of database operations within a single transaction. Your task is to design and implement a Java program that accomplishes the following:
+Connect to a database of your choice (e.g., MySQL, Oracle, PostgreSQL) using JDBC.
+ 
+=>create a table and insert records. your table data should represent as below.
+
+Table Name: Employee:
+======================
+Column name          data type
+-----------	    -----------
+Id		     number(8)
+name		     varchar2(20)
+age		     number(3)
+salary		     number(8,2)
+
+Employee Data:
+==============
+1	Naresh	22	23432.6
+2	Suresh	23	32222.5
+3	Jain	32	43332.6
+4	David	27	15009.2
+5	Anthony	34	32322.5
+
+Create Employee class:
+======================
+instance variables:
+-------------------
+int id;
+String name;
+int age;
+double salary;
+
+retrive the data from employee table and store it in list<Employee> objecct;
+
+Get list of employees who are older than 25 years.
+
+Expected output:
+---------------- 
+3	Jain	32	43332.6
+4	David	27	15009.2
+5	Anthony	34	32322.5
+
+
+Program_02:
+==========
+Program1:Write a jdbc program as follows:
+Note:Create a table:-Product (U can create table from database).
+              Table Columns:-productId,productName,productPrice,productQty.
+Give Option to the user:
+          1.Insert productdetails into product table.
+          2.Retrieve productdetails in forward direction.
+          3.Retrieve productdetails in reverse direction.
+          4.Retrieve 3rd record from top.
+          5.Retrieve 3rd record from bottom. 
+          6.Retrieve last three record from product table. 
+
+Program_03::Write a jdbc program which proves that PreparedStatement is faster as compared to Statement.   
