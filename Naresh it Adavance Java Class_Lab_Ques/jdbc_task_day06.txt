@@ -1,0 +1,20 @@
+
+
+
+Assignment01:
+============
+step-1 : Create the following DB Tables
+StuData(stuId,stuRollNo,stuName,stuBranch)
+StuAddress(stuId,stuHno,city,pincode)
+StuContact(stuId,mid,phno)
+
+step-2 : Construct Procedure to insert student details into DB Tables.
+step-3 : Construct JDBC Application to execute Procedure.
+
+Assignment02:
+============
+step-1 :Construct Procedure to display the complete details of student based on stuId.
+step-2 :Construct JDBC Application to execute Procedure.
+
+
+Assignment03:Write a JDBC program to read the data from CSV file(excel sheet) and insert data into database table.

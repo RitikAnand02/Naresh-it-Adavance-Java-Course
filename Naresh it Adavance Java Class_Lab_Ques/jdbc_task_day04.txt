@@ -1,0 +1,14 @@
+
+
+Program01:
+==========
+Step01=>Create Table:emp_info
+Columns:empId,empName,empAddress,empMailId,empPhNo,empResume(text file).
+Step02:Write a JDBC program to insert employee details into database table.
+
+Program02:Write a JDBC program to retrieve empResume based on empPhNo and store that resume(file) at any location in your System.
+
+Program_03:JDBC program to insert image into database table.
+Hints:Table-
+      Player_info
+      Table columns:pId,pName,pImage,pDob.

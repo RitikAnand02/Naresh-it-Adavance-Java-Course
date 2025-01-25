@@ -1,0 +1,114 @@
+
+
+package test;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Scanner;
+
+public class ResultSetDemo {
+
+	public static void main(String[] args) {
+	    try {
+	    	Class.forName("oracle.jdbc.driver.OracleDriver");
+	    	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "oracle");
+	    	PreparedStatement ps=con.prepareStatement
+	    			("insert into product values(?,?,?,?)");
+	    	PreparedStatement ps1=con.prepareStatement
+	    ("select * from product");
+	    	PreparedStatement ps2=con.prepareStatement
+	    		    ("select * from product",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+	    	while(true)
+	    	{
+	    	System.out.println("Options are:\n1.Insert productdetails into product table.\n"
+					+ "2.Retrieve productdetails in forward direction.\n3."
+					+ "Retrieve productdetails in reverse direction.\n4.Retrieve 3rd record from top.\n5.Retrieve 3rd record from bottom.\n6.Retrieve last three record from product table. ");
+	      Scanner sc=new Scanner(System.in);
+	      System.out.println("Choose your Option:");
+	      int option=sc.nextInt();
+	      switch(option)
+	      {
+	      case 1:
+	    	  System.out.println("=============Inserting Detail============");
+	    	  System.out.println("Enter Product Id");
+	    	  int pId=sc.nextInt();
+	    	  sc.nextLine();
+	    	  System.out.println("Enter Product Name:");
+	    	  String pName=sc.nextLine();
+	    	  System.out.println("Enter Product Price:");
+	    	  double pPrice=sc.nextDouble();
+	    	  System.out.println("Enter Product Qty:");
+	    	  int pQty=sc.nextInt();
+	    	  ps.setInt(1, pId);
+	    	  ps.setString(2, pName);
+	    	  ps.setDouble(3, pPrice);
+	    	  ps.setInt(4, pQty);
+	    	  int k = ps.executeUpdate();
+	    	  if(k>0)
+	    		  System.out.println("Success");
+	    	  break;
+	      case 2:
+	    	  System.out.println("===========Retrieving Product Details in Forward Direction========");
+	    	  ResultSet rs = ps1.executeQuery();
+	    	  while(rs.next())
+	    	  {
+	    		  System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+rs.getDouble(3)+"\t"+rs.getInt(4));
+	    	  }
+	    	  break;
+	      case 3:
+	    	  System.out.println("===========Retrieving Product Details in Forward Direction========");
+	    	  ResultSet rs1 = ps2.executeQuery();
+	    	  while(rs1.next())
+	    	  {
+	    		  System.out.println(rs1.getInt(1)+"\t"+rs1.getString(2)+"\t"+rs1.getDouble(3)+"\t"+rs1.getInt(4));
+	    	  }
+	    	 System.out.println("===========Retrieving Product Details in Reverse Direction========");
+	    	  while(rs1.previous())
+	    	  {
+	    		  System.out.println(rs1.getInt(1)+"\t"+rs1.getString(2)+"\t"+rs1.getDouble(3)+"\t"+rs1.getInt(4));
+	    	  }
+	    	  break;
+	      case 4:System.out.println("=============3rd record from top===============");
+	    	  ResultSet rs3 = ps2.executeQuery();
+	    	  rs3.next();
+	    	  if(rs3.absolute(3))
+	    	  {
+	    		  System.out.println(rs3.getInt(1)+"\t"+rs3.getString(2)+"\t"+rs3.getDouble(3)+"\t"+rs3.getInt(4));  
+	    	  }
+	    	  break;
+	      case 5:
+	    	  System.out.println("=============3rd record from bottom===============");
+	    	  ResultSet rs4 = ps2.executeQuery();
+	    	  rs4.afterLast();
+	    	  if(rs4.absolute(-3))
+	    	  {
+	    		  System.out.println(rs4.getInt(1)+"\t"+rs4.getString(2)+"\t"+rs4.getDouble(3)+"\t"+rs4.getInt(4));  
+	    	  }
+	    	  break;
+	      case 6:
+	    	  System.out.println("=============Last three record from===============");
+	    	  ResultSet rs5 = ps2.executeQuery();
+	    	  rs5.afterLast();
+	    	  int count=0;
+	    	  while(rs5.previous())
+	    	  {
+	    		  count++;
+	    		  System.out.println(rs5.getInt(1)+"\t"+rs5.getString(2)+"\t"+rs5.getDouble(3)+"\t"+rs5.getInt(4));  
+	    	      if(count==3)
+	    	    	  break;
+	    	  }
+	    	  break;
+	      }
+	      if(!(option>=1&&option<=6))
+	    		  break;
+	    }
+	    }
+	    catch (Exception e) {
+			e.printStackTrace();
+		}
+	    
+	    
+	}
+
+}
