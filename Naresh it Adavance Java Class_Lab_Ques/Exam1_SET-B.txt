@@ -1,0 +1,33 @@
+
+
+Program01: (10 marks)
+=====================
+Write a Java program to perform below operations:
+Note:
+-create table emp_info
+-Table's properties: id, name, salary, and department.
+-Insert 5 records from sql command line.
+
+Establish a JDBC connection to Oracle.
+Retrieve the employee details from the employees table.
+Convert the ResultSet into a list of Employee objects.(2 marks)
+->Filter employees whose salary is greater than 50,000.(2 marks)
+->Sort the employees by salary in descending order.(2 marks)
+->Limit the results to the top 5 employees based on salary.(2 marks)
+->Print the list of top 5 employees with their details.(2 marks)
+
+Program02:(10 marks)
+====================
+Step01=>Use above program's Table:emp_info
+Columns:empId,empName,empSalary,empDepartment.
+Step02: Construct Function to retrieve Employee's department based on Employee Id.
+step03: Construct JDBC Application to execute function.
+
+Program_03:(10 marks)
+=====================
+JDBC program to insert player's info with player image into database table.
+Table:Player_info
+      Table columns:pId,pName,pDob,pImage.
+
+
+
