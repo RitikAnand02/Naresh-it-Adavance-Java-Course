@@ -8,6 +8,6 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/HP/Desktop/JDBC JAR/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/HP/Desktop/JAR_Files/Advance_Java_jar/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
