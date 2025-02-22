@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="Servelet_App1_Insertion">
+                
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+                
+        <property name="java-output-path" value="/Servelet_App1_Insertion/build/classes"/>
+        <property name="context-root" value="Servelet_App1_Insertion"/>
+            
+    </wb-module>
+    
+</project-modules>
